@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AACSP</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>AI Agent Controls Software Protocol(<span id="softwareName">{{ software_name }}</span>)</h1>
+    </header>
+    <main class="app-main">
+        <div class="info-bar">
+            <span>Software ID: <strong id="softwareId">{{ software_id }}</strong></span>
+            <span>Current View: <strong id="currentView">Loading...</strong></span>
+        </div>
+        <div id="ai-status" class="ai-status">Connecting to AI control system...</div>
+
+        <div id="ui-elements-container" class="ui-elements-container">
+            <!-- UI元素将由JavaScript动态填充，并根据视图组织 -->
+        </div>
+    </main>
+    <footer class="app-footer">
+        <div class="log-container">
+            <h2>Action Log:</h2>
+            <ul id="action-log"></ul>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

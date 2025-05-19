@@ -1,0 +1,211 @@
+/* static/css/style.css */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f2f5;
+    color: #1c1e21;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app-header {
+    background-color: #1877f2; /* Facebook Blue or similar */
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.app-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.app-main {
+    flex-grow: 1;
+    padding: 20px;
+    max-width: 900px; /* Content width */
+    width: 100%;
+    margin: 20px auto; /* Centering */
+    box-sizing: border-box;
+}
+
+.info-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #e7f3fe;
+    border: 1px solid #cce3fa;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+.info-bar strong {
+    color: #0d6efd;
+}
+
+.ai-status {
+    padding: 12px 15px;
+    background-color: #fff3cd; /* Light yellow for warning/info */
+    border-left: 5px solid #ffeeba; /* Yellow border */
+    color: #664d03;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-style: italic;
+}
+
+.ui-elements-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    min-height: 250px;
+    display: flex; /* Default, will be overridden by view-specific styles */
+    flex-direction: column; /* Default to column for unknown views */
+    gap: 15px;
+}
+
+/* --- View-Specific Layouts --- */
+.view-homepage .nav-buttons {
+    display: flex;
+    justify-content: space-around; /* Distribute nav buttons */
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.view-waimai_page .search-area,
+.view-checkout_page .form-area {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+}
+.view-waimai_page .food-list,
+.view-cart_page .cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- UI Element Styling --- */
+.ui-element {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    font-size: 1em;
+}
+.ui-element strong { /* Label part */
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 600;
+}
+.ui-element .description-text { /* For element description if shown */
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 3px;
+}
+
+
+.ui-element.button {
+    background-color: #0d6efd; /* Bootstrap primary blue */
+    color: white !important; /* <--- 确保按钮本身的文字是白色 */
+    border: none;
+    cursor: pointer; /* Indicate AI will "click" */
+    text-align: center;
+}
+.ui-element.button:hover {
+    background-color: #0b5ed7;
+}
+
+/* 确保按钮内的 strong 和 description-text 也是白色 */
+.ui-element.button strong,
+.ui-element.button .description-text {
+    color: white !important; /* 使用 !important 强制覆盖 */
+}
+
+.ui-element.text_input {
+    display: flex;
+    flex-direction: column; /* Label above value */
+    background-color: #f8f9fa; /* Slightly different background */
+}
+.ui-element.text_input .value-display {
+    font-style: italic;
+    color: #495057;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: white;
+    min-height: 20px; /* Ensure it has some height even if empty */
+}
+
+.ui-element.list_item {
+    background-color: #e9ecef;
+    border-left: 4px solid #0dcaf0; /* Bootstrap info color */
+}
+
+.ui-element.label {
+    background-color: transparent;
+    border: none;
+    padding: 5px 0;
+    box-shadow: none;
+}
+.ui-element.label strong {
+    font-size: 1.1em;
+    color: #212529;
+}
+
+/* --- Action Highlighting (from previous CSS, slightly adjusted) --- */
+.ui-element.highlight-action {
+    border-color: #dc3545 !important; /* Bootstrap danger red */
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.5) !important;
+    transform: translateY(-2px); /* Slight lift */
+}
+
+.ui-element.highlight-flash {
+    animation: flash-effect 0.7s ease-out;
+}
+@keyframes flash-effect {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.03); background-color: #ffc107; } /* Bootstrap warning yellow */
+}
+
+
+.app-footer {
+    background-color: #f8f9fa;
+    padding: 20px 30px;
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+    margin-top: auto; /* Push to bottom if content is short */
+}
+.log-container h2 {
+    font-size: 1.2em;
+    margin-top: 0;
+}
+#action-log {
+    list-style-type: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    border-radius: 6px;
+    font-size: 0.85em;
+}
+#action-log li {
+    padding: 6px 3px;
+    border-bottom: 1px dashed #eee;
+    color: #495057;
+}
+#action-log li:last-child {
+    border-bottom: none;
+}
